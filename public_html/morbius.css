@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700');
 
 html {
 	font-size: medium;
@@ -90,6 +90,10 @@ h5 {
 h6 {
 	font-size: 1.1em;
 	margin-bottom: 0.5rem;
+}
+
+em {
+	font-style:italic;
 }
 
 pre,
