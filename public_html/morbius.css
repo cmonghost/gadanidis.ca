@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,60');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,600,700');
 
 html {
 	font-size: medium;
 }
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'Source Serif Pro', serif, bold;}
+font-family: 'EB Garamond', serif, bold;}
 body{
-font-family: 'Source Serif Pro', serif;}
+font-family: 'EB Garamond', serif;}
 
 body {
 	background-color: #fffff6;
