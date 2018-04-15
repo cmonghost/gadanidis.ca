@@ -1,3 +1,5 @@
+/* Adapted from Edward Morbius's example site: */
+/* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700');
 
 html {
@@ -22,6 +24,12 @@ body {
 	text-align: justify;
 }
 
+nav {
+	text-align: center;
+	font-size: 1.3rem;
+	line-height: 1.8;
+}
+
 a {
 	color: #1e6b8c;
 	font-size: 1em;
@@ -32,10 +40,10 @@ a {
 	transition-timing-function: linear;
 }
 
-a:visited {
+/*a:visited {
 	color: #6f32ad;
 	font-size: 1em;
-}
+}*/
 
 a:hover {
 	background: #f0f0ff;
