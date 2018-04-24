@@ -1,15 +1,15 @@
 /* Adapted from Edward Morbius's example site: */
 /* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
-@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700');
 
 html {
 	font-size: medium;
 }
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'Merriweather', serif, bold;}
+font-family: 'EB Garamond', serif, bold;}
 body{
-font-family: 'Merriweather', serif;}
+font-family: 'EB Garamond', serif;}
 
 body {
 	background-color: #fffff6;
@@ -101,7 +101,7 @@ h6 {
 }
 
 em {
-	font-family: 'Merriweather', serif, italic;
+	font-family: 'EB Garamond', serif, italic;
 }
 
 pre,
