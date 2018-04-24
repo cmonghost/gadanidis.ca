@@ -1,15 +1,15 @@
 /* Adapted from Edward Morbius's example site: */
 /* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
-@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Neuton:400,400i,700');
 
 html {
 	font-size: medium;
 }
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'Vollkorn', serif, bold;}
+font-family: 'Neuton', serif, bold;}
 body{
-font-family: 'Vollkorn', serif;}
+font-family: 'Neuton', serif;}
 
 body {
 	background-color: #fffff6;
@@ -101,7 +101,7 @@ h6 {
 }
 
 em {
-	font-family: 'Vollkorn', serif, italic;
+	font-family: 'Neuton', serif, italic;
 }
 
 pre,
