@@ -8,23 +8,34 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 		<style type="text/css"> </style>
 		<link rel="shortcut icon" href="favicon.ico">
+		<script type="text/javascript">
+		var pcs = document.lastModified.split(" ")[0].split("/");
+		var date = pcs[1] + '/' + pcs[0] + '/' + pcs[2];
+		onload = function(){
+			document.getElementById("lastModified").innerHTML = "Last updated: " + date;
+		}
+</script>
+</script>
 	</head>
-
-
 
 	<body width = "device-width">
 
-		<!--<img src="images/canoe.jpg" alt="sunset on the lake">-->
 		<img src="images/me.png" alt="me!">
 		<h1>I'm Tim Gadanidis.</h1>
-		<nav> <a href="#lx">Linguistics</a> | <a href="#personal">Personal</a> </nav>
 
-		<nav>
+		<div class = "sitenav">
 			<a href="https://twitter.com/tgadanidis" target = "external"><i class="icon ion-social-twitter", href=""></i></a>
 			<a href="https://github.com/cmonghost" target = "external"><i class="icon ion-social-github"></i></a>
 			<a href="https://www.last.fm/user/cmonghost" target = "external"><i class="icon ion-headphone"></i></a>
 			<a href="mailto:timothy.gadanidis@mail.utoronto.ca"><i class="icon ion-android-mail"></i></a>
-		</nav>
+		</div>
+
+
+		<div class = "pagenav">
+		<a href="#lx">Linguistics</a> |
+		<a href="#personal">Personal</a>
+		</div>
+
 
 		<h2>Linguistics</h2><a name="lx"></a>
 		<p>
@@ -34,6 +45,8 @@
 		<p>
 		<a href="https://dl.dropboxusercontent.com/s/1rodebvjw7estye/cv.pdf?dl=0">You can download my CV here.</a>
 		</p>
+
+		<h3> Research </h3>
 
 		<p>
 		My research interests lie mostly in language variation and change (LVC); that is, I study the social and linguistic predictors that underlie language variation, and how that variation leads to change over time.
@@ -51,6 +64,16 @@
 		Apart from LVC, I'm also interested in the linguistics of Japanese: both in phonology (e.g., mora-timing) and in syntax/semantics (e.g., sluicing and island effects, internally-headed relative clauses, and adjectival modifiers).
 		</p>
 
+		<h3> Output </h3>
+		<p> This section lists only downloadable papers/slides. For an exhaustive list of my output please see <a href="https://dl.dropboxusercontent.com/s/1rodebvjw7estye/cv.pdf?dl=0">my CV</a>.</p>
+
+		<p>Gadanidis, Timothy.
+		<a href="pdf/cvc10.pdf">"I'll have to steal that... um borrow it": Investigating uh and um in the instant messages of teens and twentysomethings</a>.
+		Change &amp; Variation in Canada (CVC) 10.
+		University of Manitoba and Université de Saint-Boniface (Winnipeg, Manitoba).
+		May 4&ndash;5th, 2018.</p>
+
+
 		<h2>Personal</h2><a name="personal"></a>
 		<figure>
 			<img src="images/trail.jpg" alt="A picture I took in Drumheller, AB in July 2017.">
@@ -59,4 +82,10 @@
 		<p> I grew up in London, Ontario and went to high school in Whitby, Ontario. I've been in Toronto since 2013, where I live with my partner, <a href="https://aileenlin.com" target = "external">Aileen</a>.</p>
 		<p> Other than linguistics, some of my interests include <a href="https://uoftkendo.club" target = "external">kendo</a>, tea, poetry and other literature (reading and, occasionally, writing), and free software. I've been playing the violin since I was a kid and I love listening to and discovering new <a href="https://www.last.fm/user/cmonghost" target = "external">music</a>. I'm also extremely into <a href="images/koko.jpg" target = "external">dogs</a> and, more recently, birds.</p>
 	</body>
+
+
+<div class="updated">
+<span id="lastModified"></span>
+</div>
+
 </html>

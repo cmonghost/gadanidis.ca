@@ -24,10 +24,20 @@ body {
 	text-align: justify;
 }
 
-nav {
+div.sitenav {
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 1.8;
+}
+
+div.pagenav {
 	text-align: center;
 	font-size: 1.3rem;
 	line-height: 1.8;
+}
+
+div.updated {
+	text-align: center;
 }
 
 figcaption {
