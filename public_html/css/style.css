@@ -1,17 +1,26 @@
 /* Adapted from Edward Morbius's example site: */
 /* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,700');
+@font-face {
+	font-family: LinuxLibertine;
+	src: url("fonts/LinLibertine_R.otf") format("opentype");
+}
+
+@font-face {
+	font-family: LinuxLibertine;
+	font-weight: bold;
+	src: url("fonts/LinLibertine_RB.otf") format("opentype");
+}
 
 html {
 	font-size: medium;
 }
 
 h1,h2,h3,h4,h5,h6{
-font-family: 'EB Garamond', serif, bold;}
-body{
-font-family: 'EB Garamond', serif;}
+	font-family: 'LinuxLibertine', serif, bold;
+}
 
-body {
+body{
+	font-family: 'LinuxLibertine', serif;
 	background-color: #fffff6;
 	color: #330;
 	/*font-family: georgia, times, serif;*/
@@ -19,9 +28,12 @@ body {
 	max-width: 40em;
 	padding: 0 2em;
 	width: auto;
-	font-size: 1rem;
+	font-size: 0.95rem;
 	line-height: 1.4;
 	text-align: justify;
+	font-variant-numeric: oldstyle-nums;
+	font-variant-ligatures: common-ligatures;
+	font-feature-settings: "onum";
 }
 
 div.sitenav {
@@ -56,8 +68,8 @@ a {
 }
 
 /*a:visited {
-	color: #6f32ad;
-	font-size: 1em;
+color: #6f32ad;
+font-size: 1em;
 }*/
 
 a:hover {
@@ -135,3 +147,30 @@ img{
 	margin-left: auto;
 	margin-right: auto;
 }
+/*
+body {
+counter-reset: h2counter;
+}
+h1 {
+counter-reset: h2counter;
+}
+
+h2:before {
+content: counter(h2counter) ".\0000a0\0000a0";
+counter-increment: h2counter;
+counter-reset: h3counter;
+}
+h2.nocount:before {
+content: none;
+counter-increment: none;
+}
+
+h3:before {
+content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+counter-increment: h3counter;
+}
+h3.nocount:before {
+content: none;
+counter-increment: none;
+}
+ */
