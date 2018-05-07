@@ -2,25 +2,19 @@
 /* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
 @font-face {
 	font-family: 'LinuxLibertine';
-	src: url("fonts/LinLibertine_R.woff") format("woff"),
-	url("fonts/LinLibertine_R.ttf") format("truetype"),
-	url("fonts/LinLibertine_R.otf") format("opentype");
+	src: url('../fonts/LinLibertine_R.woff') format('woff'), url('../fonts/LinLibertine_R.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'LinuxLibertine';
 	font-weight: bold;
-	src: url("fonts/LinLibertine_RB.woff") format("woff"),
-	url("fonts/LinLibertine_RB.ttf") format("truetype"),
-	url("fonts/LinLibertine_RB.otf") format("opentype");
+	src: url('../fonts/LinLibertine_RB.woff') format('woff'), url('../fonts/LinLibertine_RB.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'LinuxLibertine';
 	font-style: italic;
-	src: url("fonts/LinLibertine_RI.woff") format("woff"),
-	url("fonts/LinLibertine_RI.ttf") format("truetype"),
-	url("fonts/LinLibertine_RI.otf") format("opentype");
+	src: url('../fonts/LinLibertine_RI.woff') format('woff'), url('../fonts/LinLibertine_RI.ttf') format('truetype');
 }
 
 html {
@@ -45,7 +39,7 @@ body{
 	text-align: justify;
 	font-variant-numeric: oldstyle-nums;
 	font-variant-ligatures: common-ligatures;
-	font-feature-settings: "onum";
+	font-feature-settings: 'onum';
 }
 
 div.sitenav {
