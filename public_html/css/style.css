@@ -2,13 +2,20 @@
 /* https://codepen.io/dredmorbius/pen/KpMqqB?editors=110 */
 @font-face {
 	font-family: LinuxLibertine;
-	src: url("fonts/LinLibertine_R.otf") format("opentype");
+	src:
+	url("fonts/LinLibertine_R.woff") format("woff"),
+	url("fonts/LinLibertine_R.ttf") format("truetype"),
+	url("fonts/LinLibertine_R.otf") format("opentype"),
+
+
 }
 
 @font-face {
 	font-family: LinuxLibertine;
 	font-weight: bold;
-	src: url("fonts/LinLibertine_RB.otf") format("opentype");
+	url("fonts/LinLibertine_RB.woff") format("woff"),
+	url("fonts/LinLibertine_RB.ttf") format("truetype"),
+	url("fonts/LinLibertine_RB.otf") format("opentype"),
 }
 
 html {
