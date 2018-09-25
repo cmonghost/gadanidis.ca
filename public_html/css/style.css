@@ -161,6 +161,7 @@ img{
 
 body {
 counter-reset: h2counter;
+counter-reset: h3counter;
 }
 
 h1 {
