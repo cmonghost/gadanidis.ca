@@ -4,7 +4,7 @@
         <title>IM study</title>
 
         <script src = "jspsych-6.0.5/jspsych.js"></script>
-        <script src = "jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
         <script src = "jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script>
         <script src = "jspsych-6.0.5/plugins/jspsych-survey-text.js"></script>
 
@@ -30,14 +30,15 @@ var scale_int   = ["not at all intelligent" , "" , "" , "" , "very intelligent"]
 var scale_hes   = ["not at all hesitant"    , "" , "" , "" , "very hesitant"];
 var scale_pol   = ["not at all polite"      , "" , "" , "" , "very polite"];
 
-var welcome = {
+/* var welcome = {
     type: 'html-keyboard-response',
     stimulus: 'Welcome to the experiment. Press any key to begin.'
 }
-timeline.push(welcome)
+timeline.push(welcome) */
 
 var instructions = {
-  type: "html-keyboard-response",
+  type: "html-button-response",
+  choices: ['Continue'],
     stimulus: " " +
     "<p>In this study, you will see some screenshots.</p><p>These screenshots are taken from the middle of a conversation which is still ongoing: what you see is not the full conversation, only a part of it.</p>" +
     "<p>Your task will be to decide what you think about one of the participants in the conversation. You'll first be asked to rate them on different scales, and then on the next page you will be able to type in any other comments you have.</p><p>Try to answer the questions at a quick pace, using your gut feeling, without trying to think too hard about them for too long.</p>" +
@@ -105,7 +106,8 @@ var prebrief = {
 timeline.push(prebrief)
 
 var debrief = {
-  type: "html-keyboard-response",
+  type: "html-button-response",
+  choices: ['Continue'],
     stimulus: " " +
     "<p>You have completed the main portion of the study.</p>" +
     "<p>Please tell the experimenter that you are done.</p>" +
@@ -126,7 +128,8 @@ var postbrief = {
 timeline.push(postbrief)
 
 var ending = {
-  type: "html-keyboard-response",
+  type: "html-button-response",
+  choices: ['Continue'],
     stimulus: " " +
     "<p>Thank you for participating in this experiment! Press any key to end the experiment.</p>"
 };
