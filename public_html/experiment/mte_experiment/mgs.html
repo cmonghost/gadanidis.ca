@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IM study</title>
+
+        <script src = "jspsych-6.0.5/jspsych.js"></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-survey-text.js"></script>
+
+        <link href = "jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    </head>
+    <body></body>
+</html>
+
+<script>
+    var timeline = [];
+
+var subject_id = jsPsych.randomization.randomID(15);
+
+jsPsych.data.addProperties({
+    subject: subject_id
+});
+
+var scale_iuse  = ["I never use this word like this", "", "", "", "I use this word like this every day"];
+var scale_ihear  = ["I never hear this word like this", "", "", "", "I use this word like this every day"];
+
+var scale_fem   = ["not very feminine"    , "" , "" , "" , "very feminine"];
+var scale_masc  = ["not very masculine"   , "" , "" , "" , "very masculine"];
+var scale_young = ["not very young"       , "" , "" , "" , "very young"];
+var scale_ss = ["not very street-smart"       , "" , "" , "" , "very street-smart"];
+var scale_tough = ["not very tough"       , "" , "" , "" , "very tough"];
+var scale_friendly = ["not very friendly"       , "" , "" , "" , "very friendly"];
+var scale_educated = ["not very educated"       , "" , "" , "" , "very educated"];
+var scale_int   = ["not very intelligent" , "" , "" , "" , "very intelligent"];
+var scale_white   = ["not white"    , "" , "" , "" , "white"];
+var scale_can   = ["not Canadian"    , "" , "" , "" , "Canadian"];
+
+var instructions = {
+  type: "html-button-response",
+  choices: ['Continue'],
+  stimulus: " " +
+  "<p>This will have instructions at some point.</p>"
+};
+timeline.push(instructions)
+
+var use_and_hear = {
+    type: 'survey-likert',
+    preamble: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+        jsPsych.timelineVariable('preamble', true) +
+        '<p><em>Answer the following questions about this word.</em></p>'); },
+    questions: [
+        {prompt: "Do you use the word like it's used in this sentence?"       , labels: scale_iuse   , required: false} , // fixme made these optional for testing but make sure to switch back
+        {prompt: "Have you heard the word like it's used in this example?"      , labels: scale_ihear  , required: false} ,
+    ],
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
+var oral_response = {
+    type: 'html-button-response',
+    choices: ['Continue'],
+    stimulus: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+        jsPsych.timelineVariable('preamble', true) +
+        '<p><em>What does this word mean? Please answer this question orally, then click the button to continue.</em></p>'); },
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
+var scales = {
+    type: 'survey-likert',
+    preamble: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+        jsPsych.timelineVariable('preamble', true) +
+        '<p><em>Think about the people you imagine to use this word. Someone who uses this word sounds:</em></p>'); },
+    questions: [
+        {prompt: ""       , labels: scale_fem   , required: false} ,
+        {prompt: ""      , labels: scale_masc  , required: false} ,
+    ],
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
+var test_procedure = {
+    timeline: [use_and_hear, oral_response, scales],
+    timeline_variables: [
+    { preamble: 'I missed the bus, but <strong><u>mans</strong></u> made it here on time anyway.', word: 'mans'},
+    ],
+    randomize_order: true
+};
+timeline.push(test_procedure);
+
+var ending = {
+  type: "html-button-response",
+  choices: ['Save my data'],
+    stimulus: " " +
+    "<p>Thank you for participating in this experiment! Press any key to end the experiment.</p>"
+};
+timeline.push(ending)
+
+var text_page = {
+    type: 'survey-text',
+    //preamble: jsPsych.timelineVariable('preamble'),
+    questions: [
+        {prompt: "Is there anything else you want to say about the screenshot you just saw? You can enter as much or as little text as you like.", required: false},
+    ],
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
+jsPsych.init({
+    timeline: timeline,
+    on_finish: function() {
+    jsPsych.data.get().localSave('csv',subject_id + '.csv');
+    jsPsych.data.displayData();
+    }
+});
+
+</script>
+</html>
