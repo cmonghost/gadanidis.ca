@@ -1,57 +1,134 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Toronto study</title>
+        <title>Slang study</title>
 
-        <script src = "jspsych-6.0.5/jspsych.js"></script>
-        <script src = "jspsych-6.0.5/plugins/jspsych-html-button-response.js"></script>
-        <script src = "jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script>
-        <script src = "jspsych-6.0.5/plugins/jspsych-survey-text.js"></script>
+        <script src = "jspsych-6.0.5/jspsych.js" type = text/javascript></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-html-button-response.js" type = text/javascript></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-survey-multi-select.js" type = text/javascript></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-survey-likert.js" type = text/javascript></script>
+        <script src = "jspsych-6.0.5/plugins/jspsych-survey-text.js" type = text/javascript></script>
 
-        <link href = "jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <link href = "jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css">
     </head>
     <body></body>
 </html>
 
 <script>
-    var timeline = [];
+var timeline = [];
 
-var subject_id = jsPsych.randomization.randomID(15);
+var scale_know = ["I don't know this word", "I know this word"]
 
-jsPsych.data.addProperties({
-    subject: subject_id
-});
+var scale_iuse  = ["I never use this word or phrase like this", "", "", "", "I use this word or phrase like this every day"];
+var scale_ihear  = ["I never hear this word or phrase like this", "", "", "", "I hear this word or phrase like this every day"];
 
-var scale_iuse  = ["I never use this word like this", "", "", "", "I use this word like this every day"];
-var scale_ihear  = ["I never hear this word like this", "", "", "", "I hear this word like this every day"];
+var scale_fem      = ["not very feminine"    , "" , "" , "" , "very feminine"];
+var scale_masc     = ["not very masculine"   , "" , "" , "" , "very masculine"];
+var scale_can      = ["not Canadian"         , "" , "" , "" , "Canadian"];
+var scale_gta      = ["not from the GTA"     , "" , "" , "" , "from the GTA"];
+var scale_urb      = ["suburban"             , "" , "" , "" , "urban"]
+var scale_friendly = ["not very friendly"    , "" , "" , "" , "very friendly"];
+var scale_agg      = ["not very aggressive"  , "" , "" , "" , "very aggressive"]
+var scale_educated = ["not very educated"    , "" , "" , "" , "very educated"];
+var scale_int      = ["not very intelligent" , "" , "" , "" , "very intelligent"];
+var scale_soc      = ["working class"        , "" , "" , "" , "upper class"];
+var scale_native   = ["non-native speaker"   , "" , "" , "" , "native speaker"];
+var scale_cool     = ["not very cool"        , "" , "" , "" , "very cool"];
+var scale_trendy   = ["not very trendy"      , "" , "" , "" , "very trendy"];
+var scale_white    = ["not white"            , "" , "" , "" , "white"];
+ 
+var subject_id;
 
-var scale_fem      = ["not very feminine"     , "" , "" , "" , "very feminine"];
-var scale_masc     = ["not very masculine"    , "" , "" , "" , "very masculine"];
-var scale_young    = ["not very young"        , "" , "" , "" , "very young"];
-var scale_ss       = ["not very street-smart" , "" , "" , "" , "very street-smart"];
-var scale_tough    = ["not very tough"        , "" , "" , "" , "very tough"];
-var scale_friendly = ["not very friendly"     , "" , "" , "" , "very friendly"];
-var scale_educated = ["not very educated"     , "" , "" , "" , "very educated"];
-var scale_int      = ["not very intelligent"  , "" , "" , "" , "very intelligent"];
-var scale_white    = ["not white"             , "" , "" , "" , "white"];
-var scale_can      = ["not Canadian"          , "" , "" , "" , "Canadian"];
+var subjectid = {
+    type: 'survey-text',
+    questions: [
+    {prompt: "Participant code:", required: true},
+    ],
+    on_finish: function(data){
+        var responses = JSON.parse(data.responses);
+        var code = responses.Q0;
+        subject_id = code;
+        jsPsych.data.addProperties({subject_id: code});
+    }
+};
+timeline.push(subjectid);
+
+var consentpage = {
+    type: "survey-multi-select",
+    preamble:
+    "<style> #responsive {  width: 75%;  height: auto; } </style>" +
+    "<div align='left'>" +
+    "<img src = 'utm.png' id = 'responsive' alt = 'University of Toronto Mississauga letterhead'></img>" +
+    "<p> Thank you for your interest in our project! Our goal is to investigate attitudes, ideas, and opinions about different kinds of words and phrases that can be heard in the Toronto area. We are particularly interested in hearing from young people who live in the Greater Toronto Area. Our purpose is strictly academic and related to the sociolinguistic study of language. We have no intention of judging your responses! </p>" +
+    "<p> The task involves filling out a survey about different words you may (or may not) have heard around Toronto. We’ll ask you about different associations you have with those words, what you think they mean, and how frequently you use and hear them. </p>" +
+    "<p> We will also audio record you because some of the responses to questions will be oral rather than written. This is to ensure spontaneous responses and because we may analyze your speech sociolinguistically as part of our analysis. The audio recording will be transcribed in the UTM Linguistics Lab. </p>" +
+    "<p> We will also ask you some basic demographic information (age, gender, ethnicity, language background, places lived etc.).</p>" +
+    "<p> The survey will take about 30 minutes to complete.</p>" +
+    "<p> The audio data, transcript and the survey response data will be permanently stored on an encrypted hard drive in the UTM Linguistics Lab and will be kept secure, confidential and anonymous, only available to Prof. Denis, his researcher assistants, and other researchers at Prof. Denis' professional discretion. Anyone who is granted access to the data will be bound to confidentiality. </p>" +
+    "<p> Any personal identifies (for example personal names, addresses) that are audio recorded will be pseudonymized in the transcript. </p>" +
+    "<p> Please note that Prof. Denis and/or his colleagues may eventually publish text transcripts of what is recorded or play audio at in an academic context for genuine scholarly purposes. Your data will be presented anonymously.</p>" +
+    "<p> Participation is entirely voluntary and you can stop at any point if you’d like. If you stop before the survey is complete, your data will not be collected and will not be analyzed. Once you complete the survey, you will not be able to withdraw your participation because your data will be automatically aggregated.</p>" +
+    "<p> To help ensure participant protection procedures are followed, (a) representative(s) from the University of Toronto Human Research Ethics Program may have access to your data and consent information.  This access will be subject to the same confidentiality as described for the research team above.</p>" +
+    "<p> As a token of appreciation, you will be given a $5 gift card if you complete the survey! If you do not complete the survey, you will not be eligible for the gift card.</p>" +
+    "<p> We’d like to invite you to you to participate! If you’d like to participate, please click the 'I agree to participate' button below. Once you do that, we will begin to audio record you until the survey is complete. </p></div>",
+    questions: [
+    { prompt: "",
+      options: ["I consent to having my voice recorded, saved, and analyzed."] }
+    ],
+    button_label: 'I agree to participate!',
+    required: true
+};
+
+timeline.push(consentpage)
+
+var demographics = {
+    type: 'html-button-response',
+    choices: ['Continue'],
+    stimulus: "<p><em>Please answer the following questions orally:</em></p>" +
+    "<p>How old are you?</p>" +
+    "<p>What is your gender?</p>" +
+    "<p>What neighbourhood do you live in?</p>" +
+    "<p>Where else have you lived (within the GTA, in Canada, and outside of Canada)?</p>" +
+    "<p>What is your ethnicity?</p>" +
+    "<p>What other languages do you speak, besides English?</p>" +
+    "<p></p>",
+    data: { word: jsPsych.timelineVariable('word') },
+};
+timeline.push(demographics)
 
 var instructions = {
   type: "html-button-response",
   choices: ['Continue'],
-  stimulus: " " +
-  "<p>This will have instructions at some point.</p>"
+  stimulus: "<p>" +
+  "In this study, you will see some sentences containing <strong><u>underlined</u></strong> words or phrases. " +
+  "Then, you will be asked several questions about that underlined word or phrase. " +
+  "Some of the questions will be answered by clicking on buttons, and some will be answered by speaking orally. " +
+  "When you are ready to begin, please click 'Continue'." +
+  "</p>"
 };
 timeline.push(instructions)
 
+var heard_current_word;
+
+var know = {
+    type: 'survey-likert',
+    preamble: function(){return ('<p><em>Consider the underlined word or phrase in the following text.</em></p>' +
+        jsPsych.timelineVariable('preamble', true) +
+        '<p><em>Answer the following questions about this word or phrase.</em></p>'); },
+    questions: [
+        {prompt: "Do you know this word?"     , labels: scale_know  , required: true} ,
+    ],
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
 var use_and_hear = {
     type: 'survey-likert',
-    preamble: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+    preamble: function(){return ('<p><em>Consider the underlined word or phrase in the following text.</em></p>' +
         jsPsych.timelineVariable('preamble', true) +
-        '<p><em>Answer the following questions about this word.</em></p>'); },
+        '<p><em>Answer the following questions about this word or phrase.</em></p>'); },
     questions: [
-        {prompt: "Do you use the word like it's used in this sentence?"       , labels: scale_iuse   , required: false} , // fixme made these optional for testing but make sure to switch back
-        {prompt: "Have you heard the word like it's used in this example?"      , labels: scale_ihear  , required: false} ,
+        {prompt: "Do you use the word or phrase like it's used in this text?"     , labels: scale_iuse  , required: true} ,
+        {prompt: "Have you heard the word or phrase like it's used in this text?" , labels: scale_ihear , required: true} ,
     ],
     data: { word: jsPsych.timelineVariable('word') },
 };
@@ -59,32 +136,91 @@ var use_and_hear = {
 var oral_response = {
     type: 'html-button-response',
     choices: ['Continue'],
-    stimulus: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+    stimulus: function(){return ('<p><em>Consider the underlined word or phrase in the following text.</em></p>' +
         jsPsych.timelineVariable('preamble', true) +
-        '<p><em>What does this word mean? Please answer this question orally, then click the button to continue.</em></p>'); },
+        '<p><em>In your own words, what does this word or phrase mean? Please answer this question orally, then click the button to continue.</em></p>'); },
     data: { word: jsPsych.timelineVariable('word') },
 };
 
 var scales = {
     type: 'survey-likert',
-    preamble: function(){return ('<p><em>Consider the underlined word in the following sentence.</em></p>' +
+    preamble: function(){return ('<p><em>Consider the underlined word or phrase in the following text.</em></p>' +
         jsPsych.timelineVariable('preamble', true) +
-        '<p><em>Think about the people you imagine to use this word. Someone who uses this word sounds:</em></p>'); },
+        '<p><em>Think about the people you imagine to use this word or phrase. </p><p>(If you don\'t know this word or phrase, you can scroll to the bottom and click the button to continue.)</p><p>Someone who uses this word or phrase sounds:</em></p>'); },
     questions: [
-        {prompt: ""       , labels: scale_fem   , required: false} ,
-        {prompt: ""      , labels: scale_masc  , required: false} ,
+        {prompt: "" , labels: scale_fem      , required: true} ,
+        {prompt: "" , labels: scale_masc     , required: true} ,
+        {prompt: "" , labels: scale_can      , required: true} ,
+        {prompt: "" , labels: scale_gta      , required: true} ,
+        {prompt: "" , labels: scale_urb      , required: true} ,
+        {prompt: "" , labels: scale_friendly , required: true} ,
+        {prompt: "" , labels: scale_agg      , required: true} ,
+        {prompt: "" , labels: scale_educated , required: true} ,
+        {prompt: "" , labels: scale_int      , required: true} ,
+        {prompt: "" , labels: scale_soc      , required: true} ,
+        {prompt: "" , labels: scale_native   , required: true} ,
+        {prompt: "" , labels: scale_cool     , required: true} ,
+        {prompt: "" , labels: scale_trendy   , required: true} ,
+        {prompt: "" , labels: scale_white    , required: true} ,
     ],
     data: { word: jsPsych.timelineVariable('word') },
 };
 
-var test_procedure = {
-    timeline: [use_and_hear, oral_response, scales],
+var oral_response2 = {
+    type: 'html-button-response',
+    choices: ['Continue'],
+    stimulus: function(){return ('<p><em>Consider the underlined word or phrase in the following text.</em></p>' +
+        jsPsych.timelineVariable('preamble', true) +
+        "<p><em>Do you have any other comments about this word or phrase, how it's used, when or where it would be used, by who, or what associations it has? Please answer orally.</em></p>"); },
+    data: { word: jsPsych.timelineVariable('word') },
+};
+
+var maybe_stuff = {
+    timeline: [use_and_hear, oral_response, scales, oral_response2],
+    conditional_function: function(){
+        var data = jsPsych.data.get().last(1).values()[0];
+        if(JSON.parse(data.responses).Q0 == 0){
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+var firstone_procedure = {
+    timeline: [know, maybe_stuff],
     timeline_variables: [
-    { preamble: 'I missed the bus, but <strong><u>mans</strong></u> made it here on time anyway.', word: 'mans'},
+    { preamble: "The weather's nice today, <strong><u>eh</strong></u>?", word: 'eh'},
+    ],
+};
+timeline.push(firstone_procedure)
+
+
+var test_procedure = {
+    timeline: [know, maybe_stuff],
+    timeline_variables: [
+    { preamble: "Forgot an umbrella but <strong><u>mans</strong></u> dodged the rain.", word: 'mans'},
+    { preamble: "<p>Speaker A: I'm so hungry.</p><p>Speaker B: But the food tastes gross, <strong><u>ahlie</strong></u>?</p>", word: 'ahlie'},
+    { preamble: "Some <strong><u>wasteyute</strong></u> spilled their drink on me in the bus.", word: 'wasteyute'},
+    { preamble: "<p>Speaker A: You're lying!</p>Speaker B: <strong><u>Wallahi</strong></u>, it happened!</p>", word: 'wallahi'},
+    { preamble: "<strong><u>Top left</strong></u>, I'm quitting work tomorrow.", word: 'topleft'},
+    { preamble: "The clothes they wear are so <strong><u>bougie</strong></u>.", word: 'bougie'},
+    { preamble: "They should stop acting so <strong><u>thirsty</strong></u>.", word: 'thirsty'},
+    { preamble: "<strong><u>Highkey</strong></u>, I hate pineapple on pizza.", word: 'highkey'},
+    { preamble: "I always overhear people throwing <strong><u>shade</strong></u> at work.", word: 'shade'},
+    { preamble: "You left <strong><u>bare</u></strong> dishes in the sink!", word: 'bare'},
+    { preamble: "<p>Speaker A: I hear Sam is single now.</p><p>Speaker B: <strong><u>Nyeah, eh</strong></u>?</p>", word: 'nyeaheh'},
     ],
     randomize_order: true
 };
 timeline.push(test_procedure);
+var further = {
+    type: 'html-button-response',
+    choices: ['Continue'],
+    stimulus: "<p><em>Do you have any further comments about the survey or any of the text you saw? If so, please respond orally.</em></p>",
+    data: { word: jsPsych.timelineVariable('word') },
+};
+timeline.push(further)
+
 
 var ending = {
   type: "html-button-response",
@@ -94,19 +230,10 @@ var ending = {
 };
 timeline.push(ending)
 
-var text_page = {
-    type: 'survey-text',
-    //preamble: jsPsych.timelineVariable('preamble'),
-    questions: [
-        {prompt: "Is there anything else you want to say about the screenshot you just saw? You can enter as much or as little text as you like.", required: false},
-    ],
-    data: { word: jsPsych.timelineVariable('word') },
-};
-
 jsPsych.init({
     timeline: timeline,
     on_finish: function() {
-    jsPsych.data.get().localSave('csv',subject_id + '.csv');
+    jsPsych.data.get().localSave('csv', subject_id + '.csv');
     jsPsych.data.displayData();
     }
 });
