@@ -53,12 +53,11 @@ jsPsych.plugins['survey-likert'] = (function() {
 
   plugin.trial = function(display_element, trial) {
 
-
     var html = "";
     // inject CSS for trial
     html += '<style id="jspsych-survey-likert-css">';
     html += ".jspsych-survey-likert-statement { display:block; font-size: 16px; padding-top: 40px; margin-bottom:10px; }"+
-      ".jspsych-survey-likert-opts { list-style:none; width:100%; margin:0; padding:0 0 35px; display:block; font-size: 14px; line-height:2.3em; }"+
+      ".jspsych-survey-likert-opts { list-style:none; width:100%; margin:0; padding:0 0 35px; display:block; font-size: 14px; line-height:2.5em; }"+
       ".jspsych-survey-likert-opt-label { line-height: 1.1em; color: #444; }"+
       ".jspsych-survey-likert-opts:before { content: ''; position:relative; top:11px; /*left:9.5%;*/ display:block; background-color:#efefef; height:4px; width:100%; }"+
       ".jspsych-survey-likert-opts:last-of-type { border-bottom: 0; }"+
